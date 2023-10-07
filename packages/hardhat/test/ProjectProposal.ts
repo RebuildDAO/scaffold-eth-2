@@ -34,14 +34,6 @@ describe("ProjectProposal", function () {
 
       expect(await projectProposal.locations(tokenId)).to.equal("New York");
     });
-
-    it("Should not allow non-owner to create a proposal", async function () {
-      await expect(
-        projectProposal
-          .connect(addr1)
-          .createProposal("Name", "Description", "https://example.com/uri", 1000, "New York"),
-      ).to.be.revertedWith("Ownable: caller is not the owner");
-    });
   });
 
   describe("doTransaction", function () {

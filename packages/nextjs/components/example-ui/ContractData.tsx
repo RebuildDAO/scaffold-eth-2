@@ -22,12 +22,14 @@ export const ContractData = () => {
 
   const { data: totalCounter } = useScaffoldContractRead({
     contractName: "ProjectProposal",
-    functionName: "totalCounter",
+    functionName: "totalSupply",
   });
 
+  /*
   const { data: currentGreeting, isLoading: isGreetingLoading } = useScaffoldContractRead({
     contractName: "ProjectProposal",
-    functionName: "greeting",
+    functionName: "names",
+    args: [0],
   });
 
   useScaffoldEventSubscriber({
@@ -55,12 +57,13 @@ export const ContractData = () => {
 
   console.log("Events:", isLoadingEvents, errorReadingEvents, myGreetingChangeEvents);
 
-  const { data: yourContract } = useScaffoldContract({ contractName: "YourContract" });
+  */
+  const { data: yourContract } = useScaffoldContract({ contractName: "ProjectProposal" });
   console.log("yourContract: ", yourContract);
 
   const { showAnimation } = useAnimationConfig(totalCounter);
 
-  const showTransition = transitionEnabled && !!currentGreeting && !isGreetingLoading;
+  const showTransition = transitionEnabled; // && !!currentGreeting && !isGreetingLoading;
 
   useEffect(() => {
     if (transitionEnabled && containerRef.current && greetingRef.current) {
@@ -69,6 +72,7 @@ export const ContractData = () => {
       );
     }
   }, [transitionEnabled, containerRef, greetingRef]);
+
 
   return (
     <div className="flex flex-col justify-center items-center bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw] ">
@@ -102,7 +106,7 @@ export const ContractData = () => {
           <div className="relative overflow-x-hidden" ref={containerRef}>
             {/* for speed calculating purposes */}
             <div className="absolute -left-[9999rem]" ref={greetingRef}>
-              <div className="px-4">{currentGreeting}</div>
+              <div className="px-4">{"currentGreeting"}</div>
             </div>
             {new Array(3).fill("").map((_, i) => {
               const isLineRightDirection = i % 2 ? isRightDirection : !isRightDirection;
@@ -115,7 +119,7 @@ export const ContractData = () => {
                   speed={marqueeSpeed}
                   className={i % 2 ? "-my-10" : ""}
                 >
-                  <div className="px-4">{currentGreeting || " "}</div>
+                  <div className="px-4">{"currentGreeting" || " "}</div>
                 </Marquee>
               );
             })}
