@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 // Dynamically import MapComponent
 const DynamicMapComponent = dynamic(
-  () => import('./MapComponents'),
+  () => import('../components/MapComponents'),
   { ssr: false } // This will load the component only on the client side
 );
 
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <DynamicMapComponent />
+        <DynamicMapComponent proposals={undefined}/>
       </div>
     </>
   );

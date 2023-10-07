@@ -4,6 +4,14 @@ import {
   useScaffoldContract,
   useScaffoldContractRead,
 } from "~~/hooks/scaffold-eth";
+import dynamic from 'next/dynamic';
+
+
+// Dynamically import MapComponent
+const DynamicMapComponent = dynamic(
+  () => import('../MapComponents'),
+  { ssr: false } // This will load the component only on the client side
+);
 
 export const ContractData = () => {
   const [transitionEnabled, setTransitionEnabled] = useState(true);
@@ -68,6 +76,9 @@ export const ContractData = () => {
 
   return (
     <div className="flex flex-col justify-center items-center bg-black py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw]">
+      <div style={{ width: '600px', height: '400px' }}>
+        <DynamicMapComponent proposals={undefined}/>
+      </div>
       <div
         className={`flex flex-col max-w-md bg-base-200 bg-opacity-70 rounded-2xl shadow-lg px-5 py-4 w-full ${showAnimation ? "animate-zoom" : ""
           }`}
