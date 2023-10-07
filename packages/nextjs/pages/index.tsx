@@ -2,6 +2,13 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { MetaHeader } from "~~/components/MetaHeader";
+import dynamic from 'next/dynamic';
+
+// Dynamically import MapComponent
+const DynamicMapComponent = dynamic(
+  () => import('./MapComponents'),
+  { ssr: false } // This will load the component only on the client side
+);
 
 const Home: NextPage = () => {
   return (
@@ -65,6 +72,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
+        <DynamicMapComponent />
       </div>
     </>
   );

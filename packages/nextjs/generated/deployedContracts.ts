@@ -5,7 +5,7 @@ const contracts = {
       name: "localhost",
       contracts: {
         ProjectProposal: {
-          address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+          address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           abi: [
             {
               inputs: [],
@@ -279,6 +279,51 @@ const contracts = {
                   internalType: "uint256",
                   name: "",
                   type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [],
+              name: "getAllProposals",
+              outputs: [
+                {
+                  components: [
+                    {
+                      internalType: "uint256",
+                      name: "id",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "string",
+                      name: "name",
+                      type: "string",
+                    },
+                    {
+                      internalType: "string",
+                      name: "description",
+                      type: "string",
+                    },
+                    {
+                      internalType: "string",
+                      name: "url",
+                      type: "string",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "fundingGoal",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "fundsRaised",
+                      type: "uint256",
+                    },
+                  ],
+                  internalType: "struct ProjectProposal.Proposal[]",
+                  name: "",
+                  type: "tuple[]",
                 },
               ],
               stateMutability: "view",

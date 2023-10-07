@@ -49,7 +49,7 @@ export const ContractInteraction = () => {
             className="btn btn-circle btn-ghost h-6 w-6 bg-base-200 bg-opacity-80 z-0 min-h-0 drop-shadow-md"
             onClick={() => setVisible(false)}
           >
-            <XMarkIcon className="h-4 w-4" />
+            <XMarkIcon className="h-4 w-4 text-gold" />
           </button>
         </div>
 
@@ -60,35 +60,35 @@ export const ContractInteraction = () => {
             <input
               type="text"
               placeholder="Name"
-              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              className="input font-bai-jamjuree w-full px-5 bg-black border border-primary text-lg sm:text-2xl text-gold placeholder-white uppercase"
               onChange={e => setName(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="Description"
-              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              className="input font-bai-jamjuree w-full px-5 bg-black border border-primary text-gold text-lg sm:text-2xl placeholder-white uppercase"
               onChange={e => setDescription(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="Location"
-              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              className="input font-bai-jamjuree w-full px-5 bg-black border border-primary text-gold text-lg sm:text-2xl placeholder-white uppercase"
               onChange={e => setLocation(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="URL"
-              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              className="input font-bai-jamjuree w-full px-5 bg-black border border-primary text-gold text-lg sm:text-2xl placeholder-white uppercase"
               onChange={e => setUrl(e.target.value)}
             />
 
             <input
               type="number"
               placeholder="Funding Goal"
-              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              className="input font-bai-jamjuree w-full px-5 bg-black border border-primary text-gold text-lg sm:text-2xl placeholder-white uppercase"
               onChange={e => setFundingGoal(e.target.value)}
             />
 
