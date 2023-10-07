@@ -18,13 +18,16 @@ contract ProjectProposal is ERC721URIStorage, Ownable {
     
     constructor() ERC721("ProjectProposal", "PP") {}
 
-    function createProposal(string memory uri, uint256 fundingGoal, string memory location) public onlyOwner returns (uint256) {
+    function createProposal(string memory name, string memory description,
+        string memory uri, uint256 fundingGoal, string memory location) public onlyOwner returns (uint256) {
         uint256 tokenId = _tokenIdCounter.current();
         _mint(msg.sender, tokenId);
         _setTokenURI(tokenId, uri);
         
         fundingGoals[tokenId] = fundingGoal;
         locations[tokenId] = location;
+        names[tokenId] = name;
+        descriptions[tokenId] = description;
 
         _tokenIdCounter.increment();
         return tokenId;
