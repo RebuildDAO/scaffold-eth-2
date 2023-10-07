@@ -24,13 +24,15 @@ export const ContractData = () => {
     contractName: "ProjectProposal",
     functionName: "totalSupply",
   });
-
+  
   /*
   const { data: currentGreeting, isLoading: isGreetingLoading } = useScaffoldContractRead({
     contractName: "ProjectProposal",
     functionName: "names",
-    args: [0],
+    args: [totalCounter - 1],
   });
+
+  /*
 
   useScaffoldEventSubscriber({
     contractName: "YourContract",

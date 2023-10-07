@@ -56,8 +56,7 @@ export const ContractInteraction = () => {
         <div className="flex flex-col mt-6 px-7 py-8 bg-base-200 opacity-80 rounded-2xl shadow-lg border-2 border-primary">
           <span className="text-4xl sm:text-6xl text-black">Create Proposal</span>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
-
+          <div className="mt-8 flex flex-col items-start gap-2 sm:gap-5">
             <input
               type="text"
               placeholder="Name"
@@ -86,8 +85,13 @@ export const ContractInteraction = () => {
               onChange={e => setUrl(e.target.value)}
             />
 
-            <input type="number" placeholder="Funding Goal" className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase" onChange={e => setFundingGoal(e.target.value)} />
-            
+            <input
+              type="number"
+              placeholder="Funding Goal"
+              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              onChange={e => setFundingGoal(e.target.value)}
+            />
+
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
               <div className="flex rounded-full border-2 border-primary p-1">
                 <button
@@ -113,6 +117,6 @@ export const ContractInteraction = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
