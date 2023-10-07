@@ -8,8 +8,8 @@ const MapComponent: React.FC = (proposals: any) => {
       id: "1",
       latitude: 51.505 as number,
       longitude: -0.09 as number,
-      name: "NFT 1",
-      // ... other NFT attributes
+      name: "NFT 1",  
+           // ... other NFT attributes
     },
     // ... more NFTs
   ];
