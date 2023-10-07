@@ -39,7 +39,8 @@ describe("ProjectProposal", function () {
   describe("doTransaction", function () {
     it("Should allow users to fund a proposal", async function () {
       await projectProposal.createProposal("Name", "Description", "https://example.com/uri", 1000, "New York");
-      const tokenId = 0;
+      const tokenId = (await projectProposal.totalSupply()).sub(1).toNumber(); // Convert BigNumber to number
+
       await projectProposal.connect(addr1).doTransaction(tokenId, { value: 500 });
       expect(await projectProposal.fundsRaised(tokenId)).to.equal(500);
     });
@@ -48,6 +49,28 @@ describe("ProjectProposal", function () {
       await projectProposal.createProposal("Name", "Description", "https://example.com/uri", 1000, "New York");
       const tokenId = 0;
       await expect(projectProposal.connect(addr1).doTransaction(tokenId, { value: 500 })).to.be.ok;
+    });
+  });
+  describe("getAllProposals", function () {
+    it("Should return all proposals correctly", async function () {
+      // Create a few proposals
+      await projectProposal.createProposal("Name", "Description", "https://example.com/uri", 1000, "New York");
+      await projectProposal.createProposal("Name", "Description", "https://example.com/uri", 1000, "Los Angeles");
+
+      // Call the getAllProposals function
+      const proposals = await projectProposal.getAllProposals();
+
+      const totalProposalsCreatedInThisTest = 2;
+
+      // Check the values of the proposals created in this test run
+      for (let i = proposals.length - totalProposalsCreatedInThisTest; i < proposals.length; i++) {
+        expect(proposals[i].id).to.equal(i);
+        expect(proposals[i].name).to.equal("Name");
+        expect(proposals[i].description).to.equal("Description");
+        expect(proposals[i].url).to.equal("https://example.com/uri");
+        expect(proposals[i].fundingGoal).to.equal(1000);
+        expect(proposals[i].fundsRaised).to.equal(0);
+      }
     });
   });
 });
