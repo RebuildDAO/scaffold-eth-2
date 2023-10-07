@@ -20,6 +20,7 @@ contract ProjectProposal is
 		string name;
 		string description;
 		string url;
+        string location;
 		uint256 fundingGoal;
 		uint256 fundsRaised;
 	}
@@ -99,6 +100,7 @@ contract ProjectProposal is
 				id: tokenId,
 				name: names[tokenId],
 				description: descriptions[tokenId],
+                location: locations[tokenId],
 				url: tokenURI(tokenId),
 				fundingGoal: fundingGoals[tokenId],
 				fundsRaised: fundsRaised[tokenId]

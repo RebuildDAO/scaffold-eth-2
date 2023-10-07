@@ -311,6 +311,11 @@ const contracts = {
                       type: "string",
                     },
                     {
+                      internalType: "string",
+                      name: "location",
+                      type: "string",
+                    },
+                    {
                       internalType: "uint256",
                       name: "fundingGoal",
                       type: "uint256",

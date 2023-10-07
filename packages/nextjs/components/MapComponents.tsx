@@ -1,25 +1,45 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
+import 'leaflet-defaulticon-compatibility';
 
-const MapComponent: React.FC = (proposals: any) => {
-  const position = [51.505 as number, -0.09 as number]; // default latitude and longitude
+type Proposal = {
+  id: number;
+  name: string;
+  description: string;
+  location: string;
+  url: string;
+  fundingGoal: number;
+  fundsRaised: number;
+};
 
-  const NFTS = [
-    {
-      id: "1",
-      latitude: 51.505 as number,
-      longitude: -0.09 as number,
-      name: "NFT 1",  
-           // ... other NFT attributes
-    },
-    // ... more NFTs
-  ];
+type MapComponentProps = {
+  proposals?: Proposal[];
+};
+
+const MapComponent: React.FC<MapComponentProps> = ({ proposals }) => {
+  const position = [41.890 as number, 12.49 as number]; // default latitude and longitude
+
+  const markers = proposals?.map(proposal => {
+    const [lat, lng] = proposal.location.split(",").map(Number);
+    return {
+      id: proposal.id,
+      latitude: lat,
+      longitude: lng,
+      name: proposal.name,
+      description: proposal.description,
+      url: proposal.url,
+    };
+  }) ?? [];
 
   return (
     <MapContainer center={position} zoom={13} style={{ width: "100%", height: "400px" }}>
-      {NFTS.map(nft => (
-        <Marker key={nft.id} position={[nft.latitude, nft.longitude]}>
+      {markers.map(marker => (
+        <Marker key={marker.id} position={[marker.latitude, marker.longitude]}>
           <Popup>
-            {nft.name} {/* Or render any other NFT info you want here */}
+            <h1>{marker.name}</h1>
+            <p>{marker.description}</p>
+            <img src={marker.url} alt="proposal image" />
           </Popup>
         </Marker>
       ))}
@@ -28,7 +48,6 @@ const MapComponent: React.FC = (proposals: any) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {/* Markers for NFTs can be rendered here */}
     </MapContainer>
   );
 };
