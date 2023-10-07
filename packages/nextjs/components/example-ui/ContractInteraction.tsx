@@ -2,13 +2,11 @@ import { useState } from "react";
 import { CopyIcon } from "./assets/CopyIcon";
 import { DiamondIcon } from "./assets/DiamondIcon";
 import { HareIcon } from "./assets/HareIcon";
-import { parseEther } from "viem";
 import { ArrowSmallRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const ContractInteraction = () => {
   const [visible, setVisible] = useState(true);
-  const [newGreeting, setNewGreeting] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [fundingGoal, setFundingGoal] = useState("");
@@ -16,10 +14,9 @@ export const ContractInteraction = () => {
   const [url, setUrl] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
-    contractName: "YourContract",
-    functionName: "setGreeting",
-    args: [newGreeting],
-    value: parseEther("0.01"),
+    contractName: "ProjectProposal",
+    functionName: "createProposal",
+    args: [name, description, url, BigInt(fundingGoal), location],
     onBlockConfirmation: txnReceipt => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
@@ -89,8 +86,8 @@ export const ContractInteraction = () => {
               onChange={e => setUrl(e.target.value)}
             />
 
-
-
+            <input type="number" placeholder="Funding Goal" className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase" onChange={e => setFundingGoal(e.target.value)} />
+            
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
               <div className="flex rounded-full border-2 border-primary p-1">
                 <button
