@@ -4,6 +4,7 @@ import {
   useScaffoldContractRead,
 } from "~~/hooks/scaffold-eth";
 import dynamic from 'next/dynamic';
+import { HareIcon } from "./assets/HareIcon";
 
 const DynamicMapComponent = dynamic(
   () => import('../MapComponents'),
@@ -32,12 +33,13 @@ export const ContractData = () => {
     return (<></>)
   }
   return (
-    <div className="flex flex-col justify-center items-center bg-black py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw]">
-      <div style={{ width: '600px', height: '400px' }}>
+    <div className="flex flex-col justify-center items-center bg-base-300 py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw]">
+      <HareIcon className="absolute right-0 bottom-24" />
+      <div className="flex rounded-2xl" style={{ width: '100%', height: '800px' }}>
         <DynamicMapComponent proposals={currentProposals} />
       </div>
       <div
-        className={`flex flex-col max-w-md bg-base-200 bg-opacity-70 rounded-2xl shadow-lg px-5 py-4 w-full ${showAnimation ? "animate-zoom" : ""
+        className={`flex flex-col max-w-md bg-base-200 bg-opacity-70 rounded-2xl shadow-lg px-5 py-2 w-full ${showAnimation ? "animate-zoom" : ""
           }`}
       >
         <div className="flex justify-between w-full">
