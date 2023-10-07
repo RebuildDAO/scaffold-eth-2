@@ -11,6 +11,11 @@ contract ProjectProposal is ERC721URIStorage, Ownable {
     
     mapping(uint256 => uint256) public fundingGoals;
     mapping(uint256 => string) public locations;
+    mapping(uint256 => string) public names;
+    mapping(uint256 => string) public descriptions;
+    mapping(uint256 => string) public urls;
+    mapping(uint256 => uint256) public fundsRaised;
+    
 
     constructor() ERC721("ProjectProposal", "PP") {}
 
@@ -24,5 +29,15 @@ contract ProjectProposal is ERC721URIStorage, Ownable {
 
         _tokenIdCounter.increment();
         return tokenId;
+    }
+
+    function doTransaction(uint256 tokenId, uint256 amount) public payable {
+        require(msg.value == amount, "Sent ether does not match the specified amount.");
+        require(fundsRaised[tokenId] + amount <= fundingGoals[tokenId], "Funding goal would be exceeded.");
+
+        fundsRaised[tokenId] += amount;
+        
+        // Transfer the funds to the owner of the contract
+        payable(owner()).transfer(amount);
     }
 }
