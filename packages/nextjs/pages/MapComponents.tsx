@@ -2,13 +2,13 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 
 const MapComponent: React.FC = () => {
-  const position = [51.505 as number, -0.09 as number]; // default latitude and longitude
+  const position = [41.9028 as number, 12.4964 as number]; // default latitude and longitude
 
   const NFTS = [
     {
       id: '1',
-      latitude: 51.505 as number,
-      longitude: -0.09 as number,
+      latitude: 41.9028 as number,
+      longitude: 12.4964 as number,
       name: 'NFT 1'
       // ... other NFT attributes
     },
