@@ -16,7 +16,6 @@ contract ProjectProposal is ERC721URIStorage, Ownable {
     mapping(uint256 => string) public urls;
     mapping(uint256 => uint256) public fundsRaised;
     
-
     constructor() ERC721("ProjectProposal", "PP") {}
 
     function createProposal(string memory uri, uint256 fundingGoal, string memory location) public onlyOwner returns (uint256) {
@@ -31,13 +30,12 @@ contract ProjectProposal is ERC721URIStorage, Ownable {
         return tokenId;
     }
 
-    function doTransaction(uint256 tokenId, uint256 amount) public payable {
-        require(msg.value == amount, "Sent ether does not match the specified amount.");
-        require(fundsRaised[tokenId] + amount <= fundingGoals[tokenId], "Funding goal would be exceeded.");
+    function doTransaction(uint256 tokenId) public payable {
+        require(fundsRaised[tokenId] + msg.value <= fundingGoals[tokenId], "Funding goal would be exceeded.");
 
-        fundsRaised[tokenId] += amount;
+        fundsRaised[tokenId] += msg.value;
         
         // Transfer the funds to the owner of the contract
-        payable(owner()).transfer(amount);
+        payable(owner()).transfer(msg.value);
     }
 }
