@@ -31,7 +31,6 @@
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
-    "@types/leaflet": "^1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },
@@ -39,7 +38,6 @@
     "usehooks-ts@^2.7.2": "patch:usehooks-ts@npm:^2.7.2#./.yarn/patches/usehooks-ts-npm-2.7.2-fceffe0e43.patch"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.0",
-    "leaflet": "^1.9.4"
+    "@openzeppelin/contracts": "^5.0.0"
   }
 }
