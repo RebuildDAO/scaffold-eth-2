@@ -25,10 +25,11 @@ const MapComponent: React.FC<MapComponentProps> = ({ proposals }) => {
   const markers =
     proposals?.map(proposal => {
       const [lat, lng] = proposal.location.replaceAll(" ", "").split(",").map(Number);
+
       return {
         id: proposal.id,
-        latitude: lat,
-        longitude: lng,
+        latitude: lat || 0,
+        longitude: lng || 0,
         name: proposal.name,
         description: proposal.description,
         url: proposal.url,
